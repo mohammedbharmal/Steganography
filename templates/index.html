@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    input[type=text],
+    select {
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial;
+    }
+
+    /* Style the tab */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .button {
+      background-color: rgb(196, 202, 196);
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    p { word-break: break-all }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="tab">
+    <button class="tablinks" onclick="selectMethod(event, 'Encode')" id="defaultOpen">Encode</button>
+    <!-- <button class="tablinks" onclick="selectMethod(event, 'Encode')">Encode</button> -->
+    <button class="tablinks" onclick="selectMethod(event, 'Decode')">Decode</button>
+  </div>
+
+  <div id="Encode" class="tabcontent">
+    <form action="http://localhost:5000" method="POST" enctype="multipart/form-data" name="encode">
+      Secret Key: <input type="text" name="enkey"><br><br><br>
+      <input class="button" type="file" name="file" /><br>
+      <textarea name="inputString" rows="15" cols="100"></textarea><br><br>
+      <input class="button" type="submit" value="Encode" name="btn" />
+      <p name="result">
+        {{ var1 }}
+      </p>
+    </form>
+  </div>
+
+  <div id="Decode" class="tabcontent">
+    <form action="http://localhost:5000" method="POST" enctype="multipart/form-data" name="decode">
+      Secret Key: <input type="text" name="dekey"><br><br><br>
+      <input class="button" type="file" name="file" /><br>
+
+      <input class="button" type="submit" value="Decode" name="btn" />
+      <p name="result">
+        {{ var1 }}
+      </p>
+    </form>
+
+  </div>
+
+
+
+  <script>
+    function selectMethod(evt, methodName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(methodName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    document.getElementById("defaultOpen").click();
+  </script>
+
+</body>
+
+</html>
