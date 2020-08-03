@@ -84,8 +84,11 @@
 
   <div id="Encode" class="tabcontent">
     <form action="http://localhost:5000" method="POST" enctype="multipart/form-data" name="encode">
-      Secret Key: <input type="text" name="enkey"><br><br><br>
+      Secret key: <input type="text" name="enkey"><br>
+      Choose image:
       <input class="button" type="file" name="file" /><br>
+      Name of output image: <input type="text" name="output_image"><br><br>
+      Text to hide: <br>
       <textarea name="inputString" rows="15" cols="100"></textarea><br><br>
       <input class="button" type="submit" value="Encode" name="btn" />
       <p name="result">

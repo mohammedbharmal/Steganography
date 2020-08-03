@@ -8,3 +8,4 @@ This is a very simple implementation of a steganography algorithm. It is only co
 2. Pillow
 3. zlib
 4. pyaes
+5. NumPy
